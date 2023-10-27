@@ -24,12 +24,10 @@
    <import href="rng-simplify.xsl"/>
    <include href="rng-xsd.xsl"/>
 
-   <param name="r:schema" as="document-node()?"/>
-
    <key name="r:define" match="define" use="@name"/>
 
-   <template match="/ | @* | node()" mode="r:main" name="r:main">
-      <param name="schema" select="$r:schema" as="document-node()"/>
+   <template name="r:main">
+      <param name="schema" as="document-node()" required="yes"/>
       <param name="instance" select="." as="node()"/>
 
       <variable name="simplified" as="node()">
